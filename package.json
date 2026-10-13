@@ -1,0 +1,31 @@
+{
+  "name": "finova",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w @finova/api",
+    "dev:web": "npm run dev -w @finova/web",
+    "seed": "npm run seed -w @finova/api",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm test --workspaces",
+    "build": "npm run build --workspaces",
+    "lint": "eslint .",
+    "e2e": "playwright test",
+    "e2e:install": "playwright install --with-deps chromium",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@eslint/js": "^9.17.0",
+    "@playwright/test": "^1.49.1",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "typescript-eslint": "^8.19.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

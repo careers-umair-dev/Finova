@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html, body, #root { min-height: 100%; }
+#root { overflow-x: clip; }
+body { @apply bg-page font-sans text-sm text-ink antialiased; }
+:focus-visible { outline: 2px solid #07865b; outline-offset: 2px; }
+@layer components {
+  .card { @apply rounded-[30px] bg-white px-6 py-[22px] shadow-card transition-shadow duration-200 hover:shadow-lift; }
+  .ib { @apply grid h-[46px] w-[46px] shrink-0 place-items-center rounded-full bg-[#f4f4f3] text-[#333] transition hover:bg-[#eaeae8] active:scale-95; }
+  .ib-sm { @apply ib !h-11 !w-11 sm:!h-9 sm:!w-9; } /* 44px touch target on phones */
+  .pill { @apply inline-flex h-[52px] items-center gap-2.5 rounded-full bg-white px-[22px] text-[15px] font-medium shadow-card transition hover:bg-neutral-50 active:scale-[.98]; }
+  .btn-primary { @apply inline-flex h-12 items-center justify-center gap-2 rounded-full bg-g px-6 text-[15px] font-medium text-white transition hover:bg-g-dark active:scale-[.98] disabled:opacity-60; }
+  .input { @apply h-12 w-full rounded-2xl border border-transparent bg-canvas px-4 text-[15px] outline-none transition focus:border-g focus:bg-white; }
+}
+/* Subtle one-time entrance for dashboard cards: opacity + 8px rise, staggered 50ms. Not applied to every element. */
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.stagger > * { animation: rise .4s ease-out both; }
+.stagger > *:nth-child(2) { animation-delay: .05s; } .stagger > *:nth-child(3) { animation-delay: .1s; } .stagger > *:nth-child(4) { animation-delay: .15s; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }

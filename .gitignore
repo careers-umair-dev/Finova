@@ -1,0 +1,19 @@
+node_modules
+dist
+coverage
+*.tsbuildinfo
+*.log
+.DS_Store
+
+# Secrets: never commit real environment files (only the *.example templates are tracked)
+.env
+.env.*
+!.env.example
+
+# Vercel CLI link folder
+.vercel
+
+uploads
+.e2e-uploads
+playwright-report
+test-results
